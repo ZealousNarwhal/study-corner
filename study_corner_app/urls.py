@@ -8,4 +8,5 @@ app_name = "study_corner_app"
 urlpatterns = [
 	# Home Page
 	path('', views.index, name='index'),
+	path('topic', views.topic, name='topic')
 ]
