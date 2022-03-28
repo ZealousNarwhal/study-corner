@@ -1,0 +1,12 @@
+{% extends "study_corner_app/header.html" %}
+
+{% block content %}
+<h1>Select a Topic</h1>
+<ul>
+	{% for topic in topics %}
+	<h2><a href ="{% url 'study_corner_app:questions' %}?topic={{ topic }}">{{ topic }}</a></h2>
+	{% empty %}
+	<h2>There are no Topics!</h2>
+	{% endfor %}
+</ul>
+{% endblock content %}
