@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 
-from .models import Topic
+from .models import Topic, Question
 
 # Create your views here.
 def index(request):
@@ -17,8 +17,11 @@ def questions(request):
 	'''questions display page'''
 	if request.method == 'GET':
 		topic = request.GET.get('topic', '')
+		questions = Question.objects.order_by('date_added')
 		if Topic.objects.filter(title=topic).exists():
-			context = {'topic': topic}
+			context = 	{'topic': topic,
+						'questions': questions,
+						}
 			return render(request, 'study_corner_app/questions.html', context)
 		else:
 			return redirect('/topics')

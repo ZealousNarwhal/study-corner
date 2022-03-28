@@ -2,4 +2,18 @@
 
 {% block content %}
 <h1>Questions related to {{ topic }}:</h1>
+{% for question in questions %}
+<ul>
+	<h2>{{ question }}</h2>
+	{% for answer in question.answer_set.all %}
+	<p>{{ answer }}<p>
+	{% empty %}
+	<p>-Blank-</p>
+	{% endfor %}
+<ul>
+{% empty %}
+<ul>
+	<p>No Entries exist for this Topic.</p>
+<ul>
+{% endfor %}
 {% endblock content %}
